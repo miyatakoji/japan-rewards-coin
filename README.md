@@ -40,3 +40,28 @@ Rewardに設計よりユーザーフレンドリーさを高め、自治体と�
 ウォレットのUXや煩雑さから、ステーブルコインは保有自体にハードルがあるので、保有自体にインセンティブを提供する。ステーキング報酬の付与と、保有自体の優待サービスを提供する発行者は裏付け金の運用益から一部をユーザーに還元する
 
 
+
+## how to work
+Run a local network in the first terminal:
+
+```
+yarn chain
+```
+
+This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in hardhat.config.ts.
+
+On a second terminal, deploy the test contract:
+
+```
+yarn deploy
+```
+
+This command deploys a test smart contract to the local network. The contract is located in packages/hardhat/contracts and can be modified to suit your needs. The yarn deploy command uses the deploy script located in packages/hardhat/deploy to deploy the contract to the network. You can also customize the deploy script.
+
+On a third terminal, start your NextJS app:
+
+```
+yarn start
+```
+
+Visit your app on: http://localhost:3000. You can interact with your smart contract using the Debug Contracts page. 

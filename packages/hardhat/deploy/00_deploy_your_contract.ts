@@ -3,12 +3,12 @@ import { DeployFunction } from "hardhat-deploy/types";
 import { Contract } from "ethers";
 
 /**
- * Deploys a contract named "YourContract" using the deployer account and
+ * Deploys a contract named "JapanRewardsCon" using the deployer account and
  * constructor arguments set to the deployer address
  *
  * @param hre HardhatRuntimeEnvironment object.
  */
-const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+const deployJapanRewardsCon: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   /*
     On localhost, the deployer account is the one that comes with Hardhat, which is already funded.
 
@@ -21,11 +21,15 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
+  const initialSupply = 100000000000000;
+  const fixedCashback = 100; // fixed cashback amount
+  const percentageCashback = 2; // percentage cashback (2%)
+  const jackpotPercentage = 1; // jackpot percentage (1%)
 
-  await deploy("YourContract", {
+  await deploy("JapanRewardsCon", {
     from: deployer,
     // Contract constructor arguments
-    args: [deployer],
+    args: [initialSupply, fixedCashback, percentageCashback, jackpotPercentage],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
@@ -33,12 +37,12 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   });
 
   // Get the deployed contract to interact with it after deploying.
-  const yourContract = await hre.ethers.getContract<Contract>("YourContract", deployer);
-  console.log("👋 Initial greeting:", await yourContract.greeting());
+  const JapanRewardsCon = await hre.ethers.getContract<Contract>("JapanRewardsCon", deployer);
+  // console.log("👋 Initial mint:", await JapanRewardsCon.mint());
 };
 
-export default deployYourContract;
+export default deployJapanRewardsCon;
 
 // Tags are useful if you have multiple deploy files and only want to run one of them.
-// e.g. yarn deploy --tags YourContract
-deployYourContract.tags = ["YourContract"];
+// e.g. yarn deploy --tags JapanRewardsCon
+deployJapanRewardsCon.tags = ["JapanRewardsCon"];
