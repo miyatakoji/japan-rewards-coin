@@ -3,12 +3,12 @@ import { DeployFunction } from "hardhat-deploy/types";
 import { Contract } from "ethers";
 
 /**
- * Deploys a contract named "JapanRewardsCon" using the deployer account and
+ * Deploys a contract named "JapanRewardsCoin" using the deployer account and
  * constructor arguments set to the deployer address
  *
  * @param hre HardhatRuntimeEnvironment object.
  */
-const deployJapanRewardsCon: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+const deployJapanRewardsCoin: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   /*
     On localhost, the deployer account is the one that comes with Hardhat, which is already funded.
 
@@ -26,7 +26,7 @@ const deployJapanRewardsCon: DeployFunction = async function (hre: HardhatRuntim
   const percentageCashback = 2; // percentage cashback (2%)
   const jackpotPercentage = 1; // jackpot percentage (1%)
 
-  await deploy("JapanRewardsCon", {
+  await deploy("JapanRewardsCoin", {
     from: deployer,
     // Contract constructor arguments
     args: [initialSupply, fixedCashback, percentageCashback, jackpotPercentage],
@@ -37,12 +37,12 @@ const deployJapanRewardsCon: DeployFunction = async function (hre: HardhatRuntim
   });
 
   // Get the deployed contract to interact with it after deploying.
-  const JapanRewardsCon = await hre.ethers.getContract<Contract>("JapanRewardsCon", deployer);
-  // console.log("👋 Initial mint:", await JapanRewardsCon.mint());
+  const JapanRewardsCoin = await hre.ethers.getContract<Contract>("JapanRewardsCoin", deployer);
+  // console.log("👋 Initial mint:", await JapanRewardsCoin.mint());
 };
 
-export default deployJapanRewardsCon;
+export default deployJapanRewardsCoin;
 
 // Tags are useful if you have multiple deploy files and only want to run one of them.
-// e.g. yarn deploy --tags JapanRewardsCon
-deployJapanRewardsCon.tags = ["JapanRewardsCon"];
+// e.g. yarn deploy --tags JapanRewardsCoin
+deployJapanRewardsCoin.tags = ["JapanRewardsCoin"];

@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract JapanRewardsCon is ERC20, Ownable {
+contract JapanRewardsCoin is ERC20, Ownable {
     uint256 public fixedCashback;
     uint256 public percentageCashback;
     uint256 public jackpotPercentage;
@@ -22,7 +22,7 @@ contract JapanRewardsCon is ERC20, Ownable {
     }
     mapping(address => Location) public locationPermissions;
 
-    constructor(uint256 initialSupply, uint256 _fixedCashback, uint256 _percentageCashback, uint256 _jackpotPercentage) ERC20("JapanRewardsCon", "JPRC") {
+    constructor(uint256 initialSupply, uint256 _fixedCashback, uint256 _percentageCashback, uint256 _jackpotPercentage) ERC20("JapanRewardsCoin", "JPRC") {
         _mint(msg.sender, initialSupply);
         fixedCashback = _fixedCashback;
         percentageCashback = _percentageCashback;
