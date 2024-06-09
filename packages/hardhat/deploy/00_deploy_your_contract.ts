@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { Contract } from "ethers";
+import { Contract, ethers} from "ethers";
 
 /**
  * Deploys a contract named "JapanRewardsCoin" using the deployer account and
@@ -21,7 +21,7 @@ const deployJapanRewardsCoin: DeployFunction = async function (hre: HardhatRunti
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
-  const initialSupply = 100000000000000;
+  const initialSupply = ethers.parseUnits("1000000", 18); // Initial supply;
   const fixedCashback = 100; // fixed cashback amount
   const percentageCashback = 2; // percentage cashback (2%)
   const jackpotPercentage = 1; // jackpot percentage (1%)
@@ -34,11 +34,12 @@ const deployJapanRewardsCoin: DeployFunction = async function (hre: HardhatRunti
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
+    gasLimit: 8000000,
   });
 
   // Get the deployed contract to interact with it after deploying.
   const JapanRewardsCoin = await hre.ethers.getContract<Contract>("JapanRewardsCoin", deployer);
-  // console.log("👋 Initial mint:", await JapanRewardsCoin.mint());
+  console.log("👋 owner:", deployer);
 };
 
 export default deployJapanRewardsCoin;
