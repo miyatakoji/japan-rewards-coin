@@ -19,7 +19,17 @@ const deployJapanRewardsCoin: DeployFunction = async function (hre: HardhatRunti
     with a random private key in the .env file (then used on hardhat.config.ts)
     You can run the `yarn account` command to check your balance in every network.
   */
-  const { deployer } = await hre.getNamedAccounts();
+  const {deployer} = await hre.getNamedAccounts();
+  const chainID = await hre.getChainId();
+  // const dep = await ethers.getSigners();
+
+  console.log("Deploying contracts with the account:", deployer);
+  console.log("Deploying chainID:", chainID);
+
+  // Check balance before deploying
+  // const balance = await deployer.getBalance();
+  // console.log("Account balance:", balance.toString());
+
   const { deploy } = hre.deployments;
   const initialSupply = ethers.parseUnits("1000000", 18); // Initial supply;
   const fixedCashback = 100; // fixed cashback amount
