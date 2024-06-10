@@ -1,6 +1,14 @@
 ## 【JPRC】 japan-rewards-coin
 Rewardに設計よりユーザーフレンドリーさを高め、自治体と企業の手数料負荷を減らす日本円のステーブルコイン
 
+## デプロイされたコントラクト
+
+| Contract Name | Chain |　Contract　Address |　Explorer |
+| ---- | ---- | ---- | ---- |
+| Japan Reward Coin | JOC Testnet | 0x5D1D97E370CC3464639F543200E411aF4e681B76 | [Explorer](https://explorer.testnet.japanopenchain.org/address/0x5D1D97E370CC3464639F543200E411aF4e681B76/coin-balances#address-tabs) |
+
+
+
 ## ステーブルコインや決済手段通貨で特に解決したい課題
 
 1. ステーブルコインに関しては近年日本での法整備は整い、様々な事例がでて来つつあるが、海外（例えば米国）のアドレスへの移転時に現地の事情に左右される可能性がある
